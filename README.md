@@ -75,7 +75,6 @@ $ quick-pm demo/dyanmic.hjson *1
 $ open http://127.0.0.1:10092/web/index.html
 
 $ quick-pm demo/static.hjson *2
-
 ``` 
 
 *1 use dynamic network configuration  
@@ -139,7 +138,7 @@ Configuration is defined as JavaScript file, that should honor some module.expor
 |:----------|:----------------------------------------------------------------------------+
 | spool     | where upload file is saved in                                               |
 | max_conn  | max http thread                                                             |
-| cron_time | frequency of spool directory check, as cron expression: "* * * * * *"       |
+| cron_time | frequency of spool directory check, as cron expression: "\* \* \* \* \* \*" |
 | filter    | how to filter files from spool directory                                    |
 | nexthop   | how to define name of nexthop cluster for a file                            |
 | log       | logging function called by core module with an argument of string message   |
@@ -216,7 +215,6 @@ module.exports = {
 
 If you want to work with statically defined network structure, you can do it by passing second argument to the uploader/collector command.
 The configuration file also should have some module.exports contract.
-
 
 | name      | what is           |
 |:----------|:------------------+
