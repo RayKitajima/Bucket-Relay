@@ -135,7 +135,7 @@ Configuration is defined as JavaScript file, that should honor some module.expor
 ### bucket-uploader
 
 | name      | what is                                                                     |
-|:----------|:----------------------------------------------------------------------------+
+|:----------|:----------------------------------------------------------------------------|
 | spool     | where upload file is saved in                                               |
 | max_conn  | max http thread                                                             |
 | cron_time | frequency of spool directory check, as cron expression: "\* \* \* \* \* \*" |
@@ -164,7 +164,7 @@ module.exports = {
 ### bucket-collector
 
 | name    | what is                                                                     |
-|:--------|:----------------------------------------------------------------------------+
+|:--------|:----------------------------------------------------------------------------|
 | id      | optional: if you use static network, define your unique id                  |
 | address | listen address                                                              |
 | port    | listen port                                                                 |
@@ -193,7 +193,7 @@ collector will get static network configuration as same as above.
 ### bucket-network
 
 | name     | what is                                                  |
-|:---------|:---------------------------------------------------------+
+|:---------|:---------------------------------------------------------|
 | server   | defines listen address and port                          | 
 | clusters | start point of publishing port to be used by collectors  |
 
@@ -217,7 +217,7 @@ If you want to work with statically defined network structure, you can do it by 
 The configuration file also should have some module.exports contract.
 
 | name      | what is           |
-|:----------|:------------------+
+|:----------|:------------------|
 | clusters  | hash with<br>key: \<cluster name\><br>value: list of collectors binded by the name |
 
 collector info:
