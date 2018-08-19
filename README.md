@@ -190,7 +190,6 @@ module.exports = {
 
 </details>
 
-collector will get static network configuration as same as above.
 
 ### bucket-network
 
