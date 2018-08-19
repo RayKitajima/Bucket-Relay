@@ -43,6 +43,8 @@ This is a stream engine for event object file across your micro services pool.
 
 ## Demo
 
+![demo](https://user-images.githubusercontent.com/4404088/44306219-51bc9b80-a3c5-11e8-8ce2-ddbe1100333d.gif)
+
 ```
                                     (visualizer)
                                          :
