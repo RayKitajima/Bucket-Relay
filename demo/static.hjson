@@ -1,0 +1,95 @@
+
+// 
+// http://127.0.0.1:8008/web/default/index.html
+// 
+
+{
+	Setting : {
+		name     : "Demo",
+		port     : 8008,
+		doc_root : "",
+		merge    : true,
+	},
+	Services : [
+		// 
+		// Sensor
+		// 
+		{
+			name  : "Sensor",
+			env   : {},
+			cmd   : "node",
+			args  : ["demo/sensor/loadavg.js"],
+			start : false,
+			merge : true,
+		},
+		
+		// 
+		// gateway
+		// 
+		{
+			name  : "Gateway_service",
+			env   : {},
+			cmd   : "node",
+			args  : ["demo/gateway/service.js"],
+			start : false,
+			merge : true,
+		},
+		{
+			name  : "Gateway_uploader",
+			env   : {},
+			cmd   : "node",
+			args  : ["lib/bucket-uploader.js","demo/gateway/conf/uploader.js","demo/network/static.js"],
+			start : false,
+			merge : true,
+		},
+		
+		// 
+		// visualize
+		// 
+		{
+			name  : "Visualize_service",
+			env   : {},
+			cmd   : "node",
+			args  : ["demo/visualize/service.js"],
+			start : false,
+			merge : true,
+		},
+		{
+			name  : "Visualize_collector",
+			env   : {},
+			cmd   : "node",
+			args  : ["lib/bucket-collector.js","demo/visualize/conf/collector.js","demo/network/static.js"],
+			start : false,
+			merge : true,
+		},
+		{
+			name  : "Visualize_uploader",
+			env   : {},
+			cmd   : "node",
+			args  : ["lib/bucket-uploader.js","demo/visualize/conf/uploader.js","demo/network/static.js"],
+			start : false,
+			merge : true,
+		},
+		
+		// 
+		// archive
+		// 
+		{
+			name  : "Archive",
+			env   : {},
+			cmd   : "node",
+			args  : ["demo/archive/service.js"],
+			start : false,
+			merge : true,
+		},
+		{
+			name  : "Archive_collector",
+			env   : {},
+			cmd   : "node",
+			args  : ["lib/bucket-collector.js","demo/archive/conf/collector.js","demo/network/static.js"],
+			start : false,
+			merge : true,
+		}
+	]
+}
+

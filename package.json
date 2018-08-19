@@ -1,0 +1,48 @@
+{
+	"about": {
+		"name": "Bucket-Relay",
+		"author": "Rei Kitajima",
+		"copyright": "Copyright (c) 2018 Rei Kitajima <rei.kitajima@gmail.com>",
+		"id": "com.craftclay.js.bucket-relay"
+	},
+	"name": "bucket-relay",
+	"description": "Bucket brigade architecture to build a flexible micro services network as your streaming processor for unstructured data",
+	"keywords": [
+		"architecture",
+		"micro services",
+		"microservices",
+		"microservices architecture",
+		"micro services architecture",
+		"IoT",
+		"バケツリレー"
+	],
+	"version": "0.1.0",
+	"author": {
+		"name": "Rei Kitajima",
+		"email": "rei.kitajima@gmail.com"
+	},
+	"maintainers": [
+		{"name": "Rei Kitajima", "email": "rei.kitajima@gmail.com"}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/RayKitajima/Bucket-Relay.git"
+	},
+	"preferGlobal": true,
+	"dependencies": {
+		"hjson": ">=3.1.1",
+		"cron": ">=1.3.0"
+	},
+	"devDependencies": {
+	},
+	"license": "MIT",
+	"main": "",
+	"bin": {
+		"bucket-uploaer": "bin/bucket-uploader",
+		"bucket-collector": "bin/bucket-collector",
+		"bucket-network": "bin/bucket-network"
+	},
+	"directories": {
+		"lib": "./lib"
+	}
+}

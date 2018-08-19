@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>LoadAvg</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.5.0/dist/chartjs-plugin-streaming.min.js"></script>
+	<script>$(function(){
+		var source_data = [];
+		var offset = 0;
+		
+		var get_data = function(){
+			var http = new XMLHttpRequest();
+			http.onload = function(e){
+				source_data = JSON.parse(this.responseText);
+			};
+			http.onerror = function(e){ alert('Cannot load'); };
+			http.ontimeout = function(){ alert('Timeout'); };
+			http.open('GET','http://127.0.0.1:10092/data');
+			http.send();
+		};
+		
+		var ctx = document.getElementById('LoadavgChart').getContext('2d');
+		var chart = new Chart(ctx,{
+			type: 'line',
+			data: {
+				datasets: [ { label:'1m', data:[] }, { label:'5m', data:[] }, { label:'15m', data:[] } ]
+			},
+			options: {
+				scales: { xAxes: [{ type: 'realtime' }] },
+				plugins: {
+					streaming: {
+						onRefresh: function(chart){
+							for( var i=0; i<source_data.length; i++ ){
+								if( source_data[i].timestamp > offset ){
+									for( var j=0; j<3; j++ ){
+										
+										console.log(source_data[i].value[j]);
+										
+										chart.data.datasets[j].data.push({
+											x: source_data[i].timestamp,
+											y: source_data[i].value[j]
+										});
+									}
+								}
+								if( offset < source_data[i].timestamp ){ offset = source_data[i].timestamp; }
+							}
+						},
+						delay: 4000
+					}
+				}
+			}
+		});
+		
+		setInterval(get_data,1000);
+	});</script>
+</head>
+<body>
+<canvas id="LoadavgChart"></canvas>
+</body>
+</html>
