@@ -130,6 +130,30 @@ $ bucket-collector collector_config.js static_network_config.js *3
 Whether to use dynamic or static network should be consensus of your micro-services network.
 
 
+## Advanced
+
+Writing, reading and sending file is high cost operation.  
+To reduce I/O cost, you can use [bucket-maker](https://github.com/RayKitajima/Bucket-Maker) a time-slicing utility.
+
+``` 
+// get 5sec(msec) bucket maker
+let bucket = require('bucket-maker').createBucket({
+	unit: 5000
+});
+
+// put loadavg() every sec
+setInterval(function(){
+	bucket.put(JSON.stringify(os.loadavg()));
+},1000);
+
+// will write out
+$ ls 
+17764.4761.bucket  17764.4762.bucket
+``` 
+
+see more about: [bucket-maker](https://github.com/RayKitajima/Bucket-Maker)
+
+
 ## Configuration
 
 Configuration is defined as JavaScript file, that should honor some module.exports contract.
