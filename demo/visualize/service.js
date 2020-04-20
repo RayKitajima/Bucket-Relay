@@ -39,8 +39,8 @@ const job = new cronJob({
 });
 
 const web = function(file_path,res){
-	file_path.replace(/[\.\.|~|^\.]/g,''); // quick sanitize
-	file_path = doc_root + file_path;
+	file_path = file_path.replace(/[\.\.|~|^\.]/g,''); // quick sanitize
+	file_path = path.resolve(doc_root,file_path);
 	
 	fs.readFile(file_path,function(err,data){
 		if( err ){

@@ -119,7 +119,7 @@ $ npm install bucket-relay
 
 $ bucket-network dynamic_network_config.js *1
 
-$ bucket-upload uploader_config.js *2
+$ bucket-uploader uploader_config.js *2
 $ bucket-collector collector_config.js static_network_config.js *3
 ``` 
 
@@ -162,7 +162,7 @@ Configuration is defined as JavaScript file, that should honor some module.expor
 
 | name      | what is                                                                     |
 |:----------|:----------------------------------------------------------------------------|
-| spool     | where upload file is saved in                                               |
+| spool     | where uploaded file is saved in                                             |
 | max_conn  | max http thread                                                             |
 | cron_time | frequency of spool directory check, as cron expression: "\* \* \* \* \* \*" |
 | filter    | how to filter files from spool directory                                    |
